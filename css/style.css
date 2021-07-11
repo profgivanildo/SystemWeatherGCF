@@ -1,9 +1,10 @@
 /* estilos da página geral*/
 body{
-    background-image: url("../img/sky-blue-wide.jpg") !important;
-    background-color: black;
+    height: 100vh;
+    background-image: url("../img/sky-blue-wide.jpg");
+    background-color: white;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
@@ -114,18 +115,52 @@ a:hover {
         transform: rotate(-135deg);
         margin-top: -2px;
     }
+    #app-data{
+        width: 90vw !important;
+    }
 }
 
 /* estilos da área do conteudo */
 .conteudo{
     height: calc(100vh - 70px);
-    padding: 30px 10px 10px 10px;
+    padding: 10px;
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #f5f5f569;
 }
 
 .btn-ir{
     max-width: 50px !important;
+}
+#app-data{
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 50vw;
+}
+.app-feeling{
+    margin-top: 10px;
+}
+.app-feeling p {
+    margin: 0 !important;
+}
+.optradio{
+    display: none;
+}
+.optradio-label{
+    cursor: pointer;
+}
+.temperatura{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.temperatura img {
+    width: 80px;
+}
+.temperatura h5{
+    font-size: 30px;
 }
