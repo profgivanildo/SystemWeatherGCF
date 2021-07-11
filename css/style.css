@@ -1,0 +1,131 @@
+/* estilos da página geral*/
+body{
+    background-image: url("../img/sky-blue-wide.jpg") !important;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body, ul{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+a:hover {
+    background: rgba(31, 9, 105, 0.719);
+    color: blanchedalmond;
+}
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* estilos do cabeçalho */
+#header{
+    box-sizing: border-box;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #343435ba;
+}
+
+#menu{
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+#menu a{
+    display: block;
+    padding: .5rem;
+}
+
+#btn-mobile{
+    display: none;
+}
+
+/* estilos da navegação (menu) mobile */
+@media (max-width: 600px) {
+    #btn-mobile{
+        display: flex;
+        border: none;
+        background: none;
+        padding: 5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        gap: .5rem;
+    }
+    #menu{
+        display: block;
+        position: absolute;
+        width: 40%;
+        top: 70px;
+        height: 0px;
+        right: 0px;
+        background: #343435d9;
+        transition: .8s;
+        z-index: 1000;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+    #nav.active #menu{
+        height: calc(100vh - 70px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+    #menu a{
+        padding: 1rem 0;
+        margin: 0 0 0 1rem;
+        border-bottom: 2px solid rgb(170, 151, 240);
+        color: blanchedalmond !important;
+    }
+    #barras-menu{
+        border-top: 2px solid;
+        width: 30px;
+        color: whitesmoke;
+    }
+    #barras-menu::after, #barras-menu::before{
+        content: '';
+        display: block;
+        width: 30px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .8s;
+    }
+    #nav.active #barras-menu{
+        border-top: none;
+    }
+    #nav.active #barras-menu::before{
+        transform: rotate(135deg);
+        margin-top: 0px;
+    }
+    #nav.active #barras-menu::after{
+        transform: rotate(-135deg);
+        margin-top: -2px;
+    }
+}
+
+/* estilos da área do conteudo */
+.conteudo{
+    height: calc(100vh - 70px);
+    padding: 30px 10px 10px 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-ir{
+    max-width: 50px !important;
+}
