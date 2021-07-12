@@ -164,3 +164,15 @@ a:hover {
 .temperatura h5{
     font-size: 30px;
 }
+#autocomplete {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.consultas{
+    display: inline;
+}
+.consulta{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
