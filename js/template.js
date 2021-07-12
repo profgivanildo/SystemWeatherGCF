@@ -161,7 +161,9 @@ var app = new Vue({
             }
             this.cidadeBusca = this.newConsulta;
             this.buscarTempoCidade();
-            this.consultas.push(this.newConsulta);
+            let now = new Date();
+            let dataHoraBusca = now.getDate()+'/'+now.getMonth()+'/'+now.getFullYear()+', '+now.getHours()+':'+now.getMinutes();
+            this.consultas.push(this.newConsulta+' | '+dataHoraBusca);
             this.newConsulta = '';
             this.saveConsulta();
         },
