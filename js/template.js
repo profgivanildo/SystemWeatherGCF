@@ -9,10 +9,18 @@ var app = new Vue({
                         <div class="input-group-prepend">
                             <span class="input-group-text">Cidade</span>
                         </div>
-                        <input v-model="newConsulta" type="text" class="form-control">
+                        <input v-model="newConsulta" type="text" class="form-control" autofocus="">
                         <input @click="addConsulta" type="submit" class="form-control btn btn-primary btn-ir" value="Ir">
                     </div>
                 </form>
+                
+                <div id="alertCidade" class="alert alert-danger alert-dismissible fade show ocultar" role="alert">
+                    Cidade não encontrada!
+                    <a class="close" data-dismiss="alert" aria-label="Close">
+                        <span class="ml-2 pointer" aria-hidden="true"><i class="fa fa-lg fa-close"></i></span>
+                    </a>
+                </div>
+                
             </div>
             <div id="app-data">
                 <h4><b>Tempo agora em {{cidade}}</b></h4>
@@ -33,8 +41,11 @@ var app = new Vue({
                 <p>Vento Dir: {{vento}}º | Veloc. vento: {{velVento}}Km/h</p>
             </div>
             <div class="app-feeling">
-                <div id="alertAvaliacao" class="alert alert-success ocultar" role="alert">
-                    Avaliação enviada com sucesso
+                <div id="alertAvaliacao" class="alert alert-success alert-dismissible fade show ocultar" role="alert">
+                    Avaliação realizada!
+                    <a class="close" data-dismiss="alert" aria-label="Close">
+                        <span class="pl-2 pointer" aria-hidden="true"> &nbsp; &nbsp;<i class="ml-5 fa fa-lg fa-close"></i></span>
+                    </a>
                 </div>
                 <p>Avalie nossa previsão</p>
                 <form>
@@ -154,7 +165,7 @@ var app = new Vue({
                 });
 
             } else {
-                alert('Cidade não encontrada');
+                this.mensagemCidadeNaoEncontrada();
             }
         })
 
@@ -191,9 +202,7 @@ var app = new Vue({
             const parsed = JSON.stringify(this.avaliacoes);
             localStorage.setItem('avaliacoes', parsed);
         },
-        mensagemAvaliacao(){
-            $('#alertAvaliacao').removeClass('ocultar');
-        },
+
 
         //Cadastrar consultas realizadas
         addConsulta(){
@@ -211,7 +220,6 @@ var app = new Vue({
             let cityName = this.newConsulta.charAt(0).toUpperCase() + this.newConsulta.slice(1);
             let now = new Date();
             let dataHoraBusca = now.getDate()+'/'+now.getMonth()+'/'+now.getFullYear()+', '+now.getHours()+':'+now.getMinutes();
-            console.log(cityName)
             this.consultas.push('#'+this.idConsulta+' - '+cityName+' | '+dataHoraBusca);
             this.newConsulta = '';
             this.saveConsulta();
@@ -259,9 +267,12 @@ var app = new Vue({
                     });
 
                 } else {
-                    alert('Cidade não encontrada')
+                    $('#alertCidade').removeClass('ocultar');
                 }
             })
-        }
+        },
+        mensagemAvaliacao(){
+            $('#alertAvaliacao').removeClass('ocultar');
+        },
     }
 })

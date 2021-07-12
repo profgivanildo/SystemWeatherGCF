@@ -19,11 +19,6 @@ a{
     text-decoration: none;
 }
 
-a:hover {
-    background: rgba(31, 9, 105, 0.719);
-    color: blanchedalmond;
-}
-
 #logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -178,4 +173,8 @@ a:hover {
 }
 .ocultar{
     display: none;
+}
+.pointer{
+    float: right;
+    cursor: pointer;
 }
