@@ -141,46 +141,8 @@ var app = new Vue({
         vento: [],
         velVento: [],
         imagem: [],
-        cidadeBusca: 'Juazeiro do Norte',
+        cidadeBusca: localStorage.cidadeTempo,
         idConsulta: 0,
-    },
-    //Mostrar tempo na página inicial (sem busca)
-    created: function mostrarTempo() {
-        const self = this;
-
-        const apiKey = 'e69c27fbc34fb1282fbabac3caafbaea'
-        const options = '&units=metric&lang=pt_br&limit=3&appid='
-        const city = self.cidadeBusca
-        const apiUrlCity = 'https://api.openweathermap.org/geo/1.0/direct?q='+city+options+apiKey
-        let cityBusca = ''
-
-        $.get(apiUrlCity, function (dataGeoCode) {
-            if(dataGeoCode[0]){
-                cityBusca = dataGeoCode[0].name+','+dataGeoCode[0].country
-                self.cidadeBusca = dataGeoCode[0].name
-
-                let urlWeather = 'https://api.openweathermap.org/data/2.5/weather?q='+cityBusca+options+apiKey
-                $.get(urlWeather, function (data){
-                    self.tempo = data.weather[0].description
-                    self.cidade = data.name
-                    self.cidadeBusca = data.name
-                    var tempArround = parseInt(data.main.temp)
-                    self.temperatura = tempArround
-                    var maxArround = parseInt(data.main.temp_max)
-                    self.maxima = maxArround
-                    var minArround = parseInt(data.main.temp_min)
-                    self.minima = minArround
-                    self.vento = data.wind.deg
-                    self.velVento = data.wind.speed
-                    self.imagem = "https://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
-                });
-
-            } else {
-                $('#toast2').removeClass('ocultar');
-                $('#toast2').toast('show');
-            }
-        })
-
     },
     mounted(){
         if(localStorage.getItem('consultas')){
@@ -192,6 +154,10 @@ var app = new Vue({
         }
         if(localStorage.idConsulta){
             this.idConsulta = localStorage.idConsulta;
+        }
+        if(!this.newConsulta){
+            localStorage.cidadeTempo = 'Juazeiro do norte'
+            this.buscarTempoCidade();
         }
     },
     methods: {
@@ -215,7 +181,6 @@ var app = new Vue({
             localStorage.setItem('avaliacoes', parsed);
         },
 
-
         //Cadastrar consultas realizadas
         addConsulta(){
             //verificar se os dados foram informados
@@ -224,7 +189,7 @@ var app = new Vue({
             }
 
             //Buscando dados da cidade pesquisada
-            this.cidadeBusca = this.newConsulta;
+            localStorage.cidadeTempo = this.newConsulta
             this.buscarTempoCidade();
 
             //Construindo as linhas de consultas
@@ -279,6 +244,7 @@ var app = new Vue({
                     });
 
                 } else {
+                    localStorage.cidadeTempo = 'Juazeiro do Norte'
                     $('#toast2').removeClass('ocultar');
                     $('#toast2').toast('show');
                 }
