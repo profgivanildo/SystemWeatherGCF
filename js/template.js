@@ -256,7 +256,7 @@ var app = new Vue({
             const apiKey = 'e69c27fbc34fb1282fbabac3caafbaea'
             const options = '&units=metric&lang=pt_br&limit=3&appid='
             const city = self.cidadeBusca
-            const apiUrlCity = 'http://api.openweathermap.org/geo/1.0/direct?q='+city+options+apiKey
+            const apiUrlCity = 'https://api.openweathermap.org/geo/1.0/direct?q='+city+options+apiKey
             let cityBusca = ''
 
             $.get(apiUrlCity, function (dataGeoCode) {
@@ -275,7 +275,7 @@ var app = new Vue({
                         self.minima = minArround
                         self.vento = data.wind.deg
                         self.velVento = data.wind.speed
-                        self.imagem = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
+                        self.imagem = "https://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
                     });
 
                 } else {
