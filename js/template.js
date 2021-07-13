@@ -151,7 +151,7 @@ var app = new Vue({
         const apiKey = 'e69c27fbc34fb1282fbabac3caafbaea'
         const options = '&units=metric&lang=pt_br&limit=3&appid='
         const city = self.cidadeBusca
-        const apiUrlCity = 'http://api.openweathermap.org/geo/1.0/direct?q='+city+options+apiKey
+        const apiUrlCity = 'https://api.openweathermap.org/geo/1.0/direct?q='+city+options+apiKey
         let cityBusca = ''
 
         $.get(apiUrlCity, function (dataGeoCode) {
