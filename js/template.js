@@ -14,14 +14,19 @@ var app = new Vue({
                     </div>
                 </form>
                 
-                <div id="alertCidade" class="alert alert-danger alert-dismissible fade show ocultar" role="alert">
-                    Cidade não encontrada!
-                    <a class="close" data-dismiss="alert" aria-label="Close">
-                        <span class="ml-2 pointer" aria-hidden="true"><i class="fa fa-lg fa-close"></i></span>
-                    </a>
-                </div>
+                
                 
             </div>
+            <!-- Toast de cidade não encontrada-->
+                <div id="toast2" role="alert" aria-live="assertive" aria-atomic="true" class="mb-2 toast ocultar" data-autohide="false">
+                    <div class="toast-header">
+                        <div class="bg-danger boder rounded"> &nbsp; &nbsp; &nbsp; </div>
+                        <strong class="mr-auto">&nbsp; Aviso!</strong>
+                    </div>
+                    <div class="toast-body">
+                        Cidade não encontrada.
+                    </div>
+                </div>
             <div id="app-data">
                 <h4><b>Tempo agora em {{cidade}}</b></h4>
                 <div class="temperatura">
@@ -41,12 +46,18 @@ var app = new Vue({
                 <p>Vento Dir: {{vento}}º | Veloc. vento: {{velVento}}Km/h</p>
             </div>
             <div class="app-feeling">
-                <div id="alertAvaliacao" class="alert alert-success alert-dismissible fade show ocultar" role="alert">
-                    Avaliação realizada!
-                    <a class="close" data-dismiss="alert" aria-label="Close">
-                        <span class="pl-2 pointer" aria-hidden="true"> &nbsp; &nbsp;<i class="ml-5 fa fa-lg fa-close"></i></span>
-                    </a>
+                <!-- Toast de avaliação realizada -->
+                <div id="toast1" role="alert" aria-live="assertive" aria-atomic="true" class="toast ocultar" data-autohide="false">
+                    <div class="toast-header">
+                        <div class="bg-success boder rounded"> &nbsp; &nbsp; &nbsp; </div>
+        
+                        <strong class="mr-auto">&nbsp; Aviso!</strong>
+                    </div>
+                    <div class="toast-body">
+                        Avaliação realizada.
+                    </div>
                 </div>
+                
                 <p>Avalie nossa previsão</p>
                 <form>
                     <div class="form-check-inline">
@@ -165,7 +176,8 @@ var app = new Vue({
                 });
 
             } else {
-                this.mensagemCidadeNaoEncontrada();
+                $('#toast2').removeClass('ocultar');
+                $('#toast2').toast('show');
             }
         })
 
@@ -267,12 +279,14 @@ var app = new Vue({
                     });
 
                 } else {
-                    $('#alertCidade').removeClass('ocultar');
+                    $('#toast2').removeClass('ocultar');
+                    $('#toast2').toast('show');
                 }
             })
         },
         mensagemAvaliacao(){
-            $('#alertAvaliacao').removeClass('ocultar');
+            $('#toast1').removeClass('ocultar');
+            $('#toast1').toast('show');
         },
     }
 })

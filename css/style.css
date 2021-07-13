@@ -114,6 +114,9 @@ a{
         width: 90vw !important;
     }
 }
+.content {
+    background-color: #f5f5f569;
+}
 
 /* estilos da área do conteudo */
 .conteudo{
@@ -123,7 +126,6 @@ a{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #f5f5f569;
 }
 
 .btn-ir{
@@ -174,7 +176,13 @@ a{
 .ocultar{
     display: none;
 }
+.toast {
+    max-width: 90vw;
+}
 .pointer{
     float: right;
     cursor: pointer;
+}
+#header img {
+    max-height: 60px;
 }
