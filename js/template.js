@@ -172,7 +172,7 @@ var app = new Vue({
                     self.minima = minArround
                     self.vento = data.wind.deg
                     self.velVento = data.wind.speed
-                    self.imagem = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
+                    self.imagem = "https://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
                 });
 
             } else {
